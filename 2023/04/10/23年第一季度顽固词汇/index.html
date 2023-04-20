@@ -245,14 +245,19 @@
     </div>
   
 
+
     <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
     <div id="gitalk-container"></div>
     <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
     <script type="text/javascript">
+      function generateValidLabel(path) {
+            const validCharacters = path.replace(/[^a-zA-Z0-9]/g, '');
+            return validCharacters.substring(0, 49);
+        }
         var gitalk = new Gitalk({
             clientID: 'e3f9d1199da3b720caea',
             clientSecret: 'c6102c0b646fd525b54e646e77314386c4d6097a',
-            id: window.location.pathname,
+            id: generateValidLabel(window.location.pathname),
             repo: 'my-blog-comments',
             owner: 'mingjourney',
             admin: 'mingjourney'
