@@ -129,7 +129,7 @@
     </div>
 
     <!--<div class="excerpt">-->
-      <!---->
+      <!--<p>在我最近的项目中，我使用 Typescript 和 React 进行开发，期间遇到了一些问题。我在这里记录下来，希望能对遇到相似问题的开发者有所帮助。</p>-->
     <!--</div>-->
   </a>
 
@@ -286,5 +286,20 @@
 
   
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>

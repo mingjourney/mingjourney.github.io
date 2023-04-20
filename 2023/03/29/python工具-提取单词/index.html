@@ -128,13 +128,15 @@
       <span id="busuanzi_value_page_pv"></span> 点击
     </span>
       <span class="slash">/</span>
-      <span class="read">阅读耗时 1 分钟</span>
+      <span class="read">阅读耗时 2 分钟</span>
     </header>
 
     <div class="post-content">
       <blockquote>
 <p><strong>提取单词</strong></p>
 </blockquote>
+<p>本篇代码笔记介绍了如何从文件中提取单词并按字典序排序。通过使用 Python 的 re 模块和一些字符串处理函数，可以将文件中的单词提取出来，然后去重、排序，最终得到一个按字典序排序的单词列表。本文提供了一个完整的代码示例，可以直接使用或参考。</p>
+<span id="more"></span>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">extract_words_and_sort_from_file</span>(<span class="params">file_path</span>):</span><br><span class="line">    <span class="comment"># 打开并读取文件内容</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(file_path, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">        content = file.read()</span><br><span class="line">        words = re.findall(<span class="string">r&#x27;^\s*([a-zA-Z, ]+)$&#x27;</span>, content, flags=re.MULTILINE)</span><br><span class="line">        words = <span class="string">&#x27;&#x27;</span>.join(words)</span><br><span class="line">        <span class="comment"># 将逗号替换为空格，方便后续提取单词</span></span><br><span class="line">        words = words.replace(<span class="string">&#x27;,&#x27;</span>, <span class="string">&#x27; &#x27;</span>)</span><br><span class="line">        words = re.findall(<span class="string">r&#x27;\b[a-zA-Z]+\b&#x27;</span>, words)</span><br><span class="line">        words = [word.lower() <span class="keyword">for</span> word <span class="keyword">in</span> words]</span><br><span class="line">        <span class="comment"># 对单词列表去重并排序</span></span><br><span class="line">        words = <span class="built_in">sorted</span>(<span class="built_in">set</span>(words))</span><br><span class="line">        word_count = <span class="built_in">len</span>(words)</span><br><span class="line">        <span class="comment"># 将单词列表连接为一个字符串</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;, &#x27;</span>.join(words), word_count</span><br><span class="line"></span><br><span class="line">file_path = <span class="string">&#x27;../英语/顽固词汇.md&#x27;</span></span><br><span class="line">result, word_count = extract_words_and_sort_from_file(file_path)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Sorted words:&quot;</span>, result)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Word count:&quot;</span>, word_count)</span><br></pre></td></tr></table></figure>
 
     </div>
@@ -157,8 +159,8 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/2023/03/18/first-article/" rel="next" title="first-article">
-          first-article
+          <a href="/2023/02/21/%E4%B8%AD%E6%96%87%E5%AD%A6%E4%B9%A0%E5%B9%B3%E5%8F%B0%E4%BB%A3%E7%A0%81/" rel="next" title="中文学习平台管理平台">
+          中文学习平台管理平台
           </a>
         
       </div>
@@ -339,5 +341,20 @@
 
   
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
