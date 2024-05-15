@@ -1,0 +1,448 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="前端,前端学习计划,Js,Vue," />
+  
+
+  
+    <meta name="description" content="实习周记(24年2月4日)" />
+  
+  
+  
+  <link rel="icon" type="image/x-icon" href="/images/footer-logo.png">
+  
+  <title>实习周记(24年2月4日) [ Hexo ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    
+    <span class="title" style="text-transform:none">Hexo</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            
+              <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+            
+          
+      
+          
+            
+              <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+            
+              <a href="#" id="post" class="pure-menu-link">文章</a>
+              <ul class="pure-menu-children">
+              
+                  
+                    <li class="pure-menu-item"><a href="/categories" style="color:#202020;" class="pure-menu-link">分类</a></li>
+                  
+              
+                  
+                    <li class="pure-menu-item"><a href="/archives" style="color:#202020;" class="pure-menu-link">归档</a></li>
+                  
+              
+                  
+                    <li class="pure-menu-item"><a href="/tags" style="color:#202020;" class="pure-menu-link">标签</a></li>
+                  
+              
+              </ul>
+            </li>
+          
+      
+          
+            
+              <li class="pure-menu-item"><a href="/paper" class="pure-menu-link">Papers</a></li>
+            
+          
+      
+          
+            
+              <li class="pure-menu-item"><a href="/project" class="pure-menu-link">项目</a></li>
+            
+          
+      
+          
+            
+              <li class="pure-menu-item"><a href="/activity" class="pure-menu-link">动态</a></li>
+            
+          
+      
+          
+            
+              <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+            
+          
+      
+  </ul>
+   
+</nav>
+
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        实习周记(24年2月4日)
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2024-02-04T14:10:45.000Z">
+        2024-02-04
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Js/" rel="tag">Js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/" rel="tag">前端学习计划</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 8 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <h4 id="1-29"><a href="#1-29" class="headerlink" title="1.29"></a>1.29</h4><h5 id="前端安全"><a href="#前端安全" class="headerlink" title="前端安全"></a>前端安全</h5><p>浏览器请求 <code>http://xxx/search?keyword=&quot;&gt;&lt;script&gt;alert(&#39;XSS&#39;);&lt;/script&gt;</code> 时，服务端会解析出请求参数 <code>keyword</code>，得到 <code>&quot;&gt;&lt;script&gt;alert(&#39;XSS&#39;);&lt;/script&gt;</code>，拼接到 HTML 中返回给浏览器。形成了如下的 HTML：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="title function_">alert</span>(<span class="string">&#x27;XSS&#x27;</span>);</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>&quot;&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>搜索<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  您搜索的关键词是：&quot;&gt;<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="title function_">alert</span>(<span class="string">&#x27;XSS&#x27;</span>);</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>只要改为</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&lt;%= escapeHTML(getParameter(&quot;</span><span class="attr">keyword</span>&quot;)) %&gt;</span>&quot;&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>搜索<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  您搜索的关键词是：&lt;%= escapeHTML(getParameter(&quot;keyword&quot;)) %&gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>escapeHTML()</code> 会对特殊工字符进行转义：对</p>
+<p>然后不只是 不仅仅是特殊字符，连 <code>javascript:</code> 这样的字符串如果出现在特定的位置也会引发 XSS 攻击。<br>特殊的 HTML 属性、JavaScript API 做了 HTML 转义，并不等于高枕无忧。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&lt;%= escapeHTML(getParameter(&quot;</span><span class="attr">redirect_to</span>&quot;)) %&gt;</span>&quot;&gt;跳转...<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>%20javascript:alert(&#39;XSS&#39;)</code>  <code> jAvascRipt:alert(&#39;XSS&#39;)</code></p>
+<p>选择了白名单的方法，彻底解决了这个漏洞：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">allowSchemes = [<span class="string">&quot;http&quot;</span>, <span class="string">&quot;https&quot;</span>];</span><br><span class="line"></span><br><span class="line">valid = <span class="title function_">isValid</span>(<span class="title function_">getParameter</span>(<span class="string">&quot;redirect_to&quot;</span>), allowSchemes);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (valid) &#123;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&lt;%= escapeHTML(getParameter(&quot;</span><span class="attr">redirect_to</span>&quot;))%&gt;</span>&quot;&gt;</span></span><br><span class="line"><span class="language-xml">    跳转...</span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/404&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    跳转...</span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">var initData = &lt;%= data.toJSON() %&gt;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>插入 JSON 的地方不能使用 <code>escapeHTML()</code>，因为转义 <code>&quot;</code> 后，JSON 格式会被破坏。</p>
+<p>但安全组又发现有漏洞，原来这样内联 JSON 也是不安全的：</p>
+<ul>
+<li>当 JSON 中包含 <code>U+2028</code> 或 <code>U+2029</code> 这两个字符时，不能作为 JavaScript 的字面量使用，否则会抛出语法错误。</li>
+<li>当 JSON 中包含字符串 <code>&lt;/script&gt;</code> 时，当前的 script 标签将会被闭合，后面的字符串内容浏览器会按照 HTML 进行解析；通过增加下一个 <code>&lt;script&gt;</code> 标签等方法就可以完成注入。</li>
+</ul>
+<p>于是要实现一个 <code>escapeEmbedJSON()</code> 函数，对内联 JSON 进行转义。</p>
+<p>转义规则如下：</p>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>转义后的字符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>U+2028</code></td>
+<td><code>\u2028</code></td>
+</tr>
+<tr>
+<td><code>U+2029</code></td>
+<td><code>\u2029</code></td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td><code>\u003c</code></td>
+</tr>
+</tbody></table>
+<p>XSS分为三种</p>
+<ul>
+<li>存储型：存在数据库</li>
+<li>反射型：存在<strong>URL</strong>，如网站搜索、跳转等。由于需要用户主动打开恶意的 URL 才能生效，攻击者往往会结合多种手段诱导用户点击。</li>
+<li>Dom型(前端问题)</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promise1 = <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;  </span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;promise1&#x27;</span>) </span><br><span class="line">    <span class="title function_">resolve</span>(<span class="string">&#x27;resolve1&#x27;</span>) </span><br><span class="line">&#125;) </span><br><span class="line"><span class="keyword">const</span> promise2 = promise1.<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;  <span class="variable language_">console</span>.<span class="title function_">log</span>(res) &#125;) </span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1&#x27;</span>, promise1); </span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;2&#x27;</span>, promise2);</span><br></pre></td></tr></table></figure>
+
+<p>下载模板</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">downloadExcelTemplate</span>(<span class="params"></span>) &#123;</span><br><span class="line">  service.<span class="title function_">keeplive</span>(&#123;</span><br><span class="line">     <span class="attr">success</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> info = personUtil.<span class="title function_">getExcelURLInfo</span>();</span><br><span class="line">      <span class="comment">// 使用 this.ApprovalFlowTypes 的当前值</span></span><br><span class="line">      <span class="keyword">let</span> approvalFlowTypeParam = <span class="string">`&amp;ApprovalRequest=<span class="subst">$&#123;<span class="built_in">encodeURIComponent</span>(<span class="built_in">JSON</span>.stringify(&#123; ApprovalFlowTypes: <span class="variable language_">this</span>.ApprovalFlowTypes &#125;))&#125;</span>`</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">let</span> url = <span class="string">&#x27;ISAPI/Bumblebee/AttendancePlugin/V0/AttendanceHandle/RetroactiveTemplate?SID=&#x27;</span> + info.<span class="property">sid</span></span><br><span class="line">        + <span class="string">&#x27;&amp;Token=&#x27;</span> + info.<span class="property">token</span></span><br><span class="line">        + <span class="string">&#x27;&amp;Encoding=&#x27;</span> + info.<span class="property">encoding</span></span><br><span class="line">        + <span class="string">&#x27;&amp;Language=&#x27;</span> + info.<span class="property">language</span></span><br><span class="line">        + approvalFlowTypeParam;</span><br><span class="line"></span><br><span class="line">      <span class="variable language_">window</span>.<span class="title function_">open</span>(url, <span class="string">&#x27;_blank&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">downloadExcelTemplate</span>(<span class="params"></span>) &#123;</span><br><span class="line">  service.<span class="title function_">keeplive</span>(&#123;</span><br><span class="line">    <span class="attr">success</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> info = personUtil.<span class="title function_">getExcelURLInfo</span>();</span><br><span class="line">      <span class="keyword">const</span> requestBody = &#123;</span><br><span class="line">        <span class="title class_">ApprovalRequest</span>: &#123;</span><br><span class="line">          <span class="title class_">ApprovalFlowTypes</span>: <span class="variable language_">this</span>.<span class="property">ApprovalFlowTypes</span>,</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;;</span><br><span class="line">      <span class="title function_">postExcelTemplate</span>(info.<span class="property">sid</span>, info.<span class="property">token</span>, requestBody)</span><br><span class="line">        .<span class="title function_">then</span>(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">let</span> url = response.<span class="property">downloadUrl</span>;</span><br><span class="line">          <span class="variable language_">window</span>.<span class="title function_">open</span>(url, <span class="string">&#x27;_blank&#x27;</span>);</span><br><span class="line">        &#125;)</span><br><span class="line">        .<span class="title function_">catch</span>(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="comment">// 处理错误</span></span><br><span class="line">          <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;Error downloading excel template:&#x27;</span>, error);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>单独<strong>初始化</strong>模块   git submodule update –init src/Visitor</p>
+<h5 id="虚拟滚动"><a href="#虚拟滚动" class="headerlink" title="虚拟滚动"></a>虚拟滚动</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">/<span class="variable constant_">ISAPI</span>/<span class="title class_">Bumblebee</span>/<span class="title class_">AttendancePlugin</span>/<span class="variable constant_">V0</span>/<span class="title class_">AttendanceHandle</span>/<span class="title class_">RetroactiveTemplate</span>			<span class="comment">//模板下载</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">&quot;ApprovalRequest&quot;</span>:</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="string">&quot;ApprovalFlowTypes&quot;</span>:<span class="number">0</span>			<span class="comment">//0:请假，2：补签。 在原来协议基础上新增该字段</span></span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/<span class="variable constant_">ISAPI</span>/<span class="title class_">Bumblebee</span>/<span class="title class_">AttendancePlugin</span>/<span class="variable constant_">V0</span>/<span class="title class_">AttendanceHandle</span>/<span class="title class_">BatchImportLeave</span>			<span class="comment">//新增协议，批量导入请假，入参出参信息参考/ISAPI/Bumblebee/AttendancePlugin/V0/AttendanceHandle/BatchImportRetroactive</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/<span class="variable constant_">ISAPI</span>/<span class="title class_">Bumblebee</span>/<span class="title class_">AttendancePlugin</span>/<span class="variable constant_">V0</span>/<span class="title class_">AttendanceHandle</span>/<span class="title class_">BatchImportLeave</span>/<span class="title class_">Status</span>  <span class="comment">//新增协议，批量导入请假状态，入参出参信息参考/ISAPI/Bumblebee/AttendancePlugin/V0/AttendanceHandle/BatchImportRetroactive/Status</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/<span class="variable constant_">ISAPI</span>/<span class="title class_">Bumblebee</span>/<span class="title class_">AttendancePlugin</span>/<span class="variable constant_">V1</span>/<span class="title class_">AttendanceHandle</span>/<span class="title class_">HandleRecords</span>	<span class="comment">//新增协议，批量修改请假补签信息</span></span><br><span class="line">方法：<span class="variable constant_">PUT</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">&quot;HandleRecordList&quot;</span>: &#123;</span><br><span class="line">		<span class="string">&quot;HandleRecord&quot;</span>: [</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="string">&quot;ID&quot;</span>:<span class="number">232</span>,</span><br><span class="line">				<span class="string">&quot;StartDateTime&quot;</span>: <span class="string">&quot;2024/01/26 00:00:00&quot;</span>,</span><br><span class="line">				<span class="string">&quot;EndDateTime&quot;</span>: <span class="string">&quot;2024/01/27 00:00:00&quot;</span>,</span><br><span class="line">				<span class="string">&quot;HandleType&quot;</span>: <span class="number">1</span>,	<span class="comment">//废弃</span></span><br><span class="line">				<span class="string">&quot;RetroactiveType&quot;</span>: <span class="number">1</span>,	<span class="comment">//补签类型，补签类型与下面的请假类型是互斥的</span></span><br><span class="line">				<span class="string">&quot;MainLeaveID&quot;</span>: <span class="number">1</span>,	<span class="comment">//请假主类型</span></span><br><span class="line">				<span class="string">&quot;SubLeaveID&quot;</span>: <span class="number">21</span>	<span class="comment">//请假子类型</span></span><br><span class="line">			&#125;</span><br><span class="line">		]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">/<span class="variable constant_">ISAPI</span>/<span class="title class_">Bumblebee</span>/<span class="title class_">AttendancePlugin</span>/<span class="variable constant_">V1</span>/<span class="title class_">AttendanceReport</span>/<span class="title class_">Export</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">&quot;AttReportExportRequest&quot;</span>: &#123;</span><br><span class="line">		<span class="string">&quot;PersonIDs&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">		<span class="string">&quot;PersonGroupIDs&quot;</span>: <span class="string">&quot;1&quot;</span>,</span><br><span class="line">		<span class="string">&quot;StartTime&quot;</span>: <span class="string">&quot;2024/01/01 00:00:00&quot;</span>,</span><br><span class="line">		<span class="string">&quot;EndTime&quot;</span>: <span class="string">&quot;2024/01/31 23:59:59&quot;</span>,</span><br><span class="line">		<span class="string">&quot;ExportFileType&quot;</span>: <span class="number">1</span>,</span><br><span class="line">		<span class="string">&quot;ExportReportType&quot;</span>: <span class="number">19</span>,</span><br><span class="line">		<span class="string">&quot;TxtTemplateID&quot;</span>: -<span class="number">1</span>,</span><br><span class="line">		<span class="string">&quot;CloseDisplayLeave&quot;</span>: <span class="number">1</span>	<span class="comment">//新增0：关闭按钮，1开启按钮</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="http://localhost:8088/ISAPI/Bumblebee/AttendancePlugin/V0/AttendanceHandle/RetroactiveTemplate?SID=B83042ED10084D0AA54E0BDB6FED8043&amp;Token=+2LHM8mqXzDaIEaU7EbLSg==&amp;Encoding=utf-8&amp;Language=en&amp;MT=GET">http://localhost:8088/ISAPI/Bumblebee/AttendancePlugin/V0/AttendanceHandle/RetroactiveTemplate?SID=B83042ED10084D0AA54E0BDB6FED8043&amp;Token=%2B2LHM8mqXzDaIEaU7EbLSg%3D%3D&amp;Encoding=utf-8&amp;Language=en&amp;MT=GET</a></p>
+<p>​      let {PersonImportApprovalStatus: {ImportStatus, SuccessNum, FailedNum, TotalNum, PersonImportRetroactiveErrorList: {PersonImportRetroactiveError: errorList = []}}} = resp;PersonImportRetroactiveError如果为空 会报错</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123;</span><br><span class="line">  <span class="title class_">PersonImportApprovalStatus</span>: &#123;</span><br><span class="line">    <span class="title class_">ImportStatus</span>,</span><br><span class="line">    <span class="title class_">SuccessNum</span>,</span><br><span class="line">    <span class="title class_">FailedNum</span>,</span><br><span class="line">    <span class="title class_">TotalNum</span>,</span><br><span class="line">    <span class="title class_">PersonImportRetroactiveErrorList</span> = &#123;&#125;,</span><br><span class="line">  &#125; = &#123;&#125;,</span><br><span class="line">&#125; = resp;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 确保即使 PersonImportRetroactiveErrorList 不存在或为空对象，也能正常解构出 PersonImportRetroactiveError</span></span><br><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">PersonImportRetroactiveError</span> = [] &#125; = <span class="title class_">PersonImportRetroactiveErrorList</span> || &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> errorList = <span class="title class_">PersonImportRetroactiveError</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">isEditAllow</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">multiSelection</span>.<span class="property">length</span> === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">multiSelection</span>.<span class="title function_">every</span>(<span class="function">(<span class="params">selectedRecord</span>) =&gt;</span> selectedRecord.<span class="property">HandleType</span> === <span class="string">&#x27;Check-In&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="ztree树组件-节点配置不可选中属性"><a href="#ztree树组件-节点配置不可选中属性" class="headerlink" title="ztree树组件 节点配置不可选中属性"></a>ztree树组件 节点配置不可选中属性</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  <span class="attr">chkDisabled</span>: <span class="literal">true</span>,</span><br><span class="line">​  <span class="attr">selectable</span>: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (s.<span class="title function_">includes</span>(c)) &#123;</span><br><span class="line"><span class="number">5</span>  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;s中包含c&#x27;</span>);</span><br><span class="line"><span class="number">6</span>&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="number">7</span>  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;s中不包含c&#x27;</span>);</span><br><span class="line"><span class="number">8</span>&#125;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-29"><span class="toc-text">1.29</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8"><span class="toc-text">前端安全</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%BB%9A%E5%8A%A8"><span class="toc-text">虚拟滚动</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ztree%E6%A0%91%E7%BB%84%E4%BB%B6-%E8%8A%82%E7%82%B9%E9%85%8D%E7%BD%AE%E4%B8%8D%E5%8F%AF%E9%80%89%E4%B8%AD%E5%B1%9E%E6%80%A7"><span class="toc-text">ztree树组件 节点配置不可选中属性</span></a></li></ol></li></ol>
+  </div>
+
+
+  </div>
+</div>
+<div class="copyright">
+    <span>本作品采用</span>
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+
+
+  
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2024/01/27/%E5%AE%9E%E4%B9%A0%E5%91%A8%E8%AE%B0(24%E5%B9%B41%E6%9C%8827%E6%97%A5)/" rel="next" title="实习周记(24年1月27日)">
+          实习周记(24年1月27日)
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/2024/02/05/%E5%AE%9E%E4%B9%A0%E5%91%A8%E8%AE%B0(24%E5%B9%B42%E6%9C%8811%E6%97%A5)/" rel="prev" title="实习周记(24年2月11日)">
+            实习周记(24年2月11日)
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <div id="gitalk-container"></div>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script type="text/javascript">
+        var gitalk = new Gitalk({
+            clientID: 'xxx',
+            clientSecret: 'xxx',
+            id: window.location.pathname,
+            repo: 'issue repo name',
+            owner: 'Github username',
+            admin: 'github username'
+        })
+        gitalk.render('gitalk-container')
+    </script>
+
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="https://github.com/fooying" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="/links">友情链接</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/fooying/hexo-theme-xoxo-plus" target="_blank">Theme xoxo-plus</a> |
+        <a class="bottom-item" href="/atom.xml">订阅</a>
+    </div>
+</footer>
+
+  
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+  
+<script>
+  (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
