@@ -135,7 +135,7 @@
       <h4 id="3-25"><a href="#3-25" class="headerlink" title="3.25"></a>3.25</h4><h5 id="git一些问题和提交预检查"><a href="#git一些问题和提交预检查" class="headerlink" title="git一些问题和提交预检查"></a>git一些问题和提交预检查</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote -v #显示远程分支</span><br><span class="line">git push --set-upstream origin feature/download #用于将本地的分支推送到远程仓库，并设置上游（远程跟踪）分支</span><br><span class="line">git commit -m &#x27;feat: xxx&#x27; -n</span><br></pre></td></tr></table></figure>
 
 <p>学到了一些新写法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;flexDiv&quot;&gt;</span><br><span class="line">              &lt;span style=&quot;margin-top:3px&quot;&gt;优惠文案链接:&lt;/span&gt;</span><br><span class="line">              &lt;el-form-item</span><br><span class="line">                :prop=&quot; &#x27;tableData.&#x27; + scope.$index + &#x27;.promptTagUrl&#x27; &quot;</span><br><span class="line">              &gt;</span><br><span class="line">                &lt;el-input</span><br><span class="line">                  style=&quot;width:200px;margin-left:10px&quot;</span><br><span class="line">                  v-model=&quot;scope.row.promptTagUrl&quot;</span><br><span class="line">                  placeholder=&quot;请输入内容&quot;</span><br><span class="line">                /&gt;</span><br><span class="line">              &lt;/el-form-item&gt;</span><br><span class="line">            &lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;flexDiv&quot;&gt;</span><br><span class="line">  .....</span><br><span class="line">  &lt;span style=&quot;margin-top:3px&quot;&gt;优惠文案链接:&lt;/span&gt;</span><br><span class="line">  &lt;el-form-item</span><br><span class="line">    :prop=&quot; &#x27;tableData.&#x27; + scope.$index + &#x27;.promptTagUrl&#x27; &quot;</span><br><span class="line">  &gt;</span><br><span class="line">    &lt;el-input</span><br><span class="line">      style=&quot;width:200px;margin-left:10px&quot;</span><br><span class="line">      v-model=&quot;scope.row.promptTagUrl&quot;</span><br><span class="line">      placeholder=&quot;请输入内容&quot;</span><br><span class="line">    /&gt;</span><br><span class="line">  &lt;/el-form-item&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 
 <h4 id="3-26"><a href="#3-26" class="headerlink" title="3.26"></a>3.26</h4><h5 id="实战WebRTC"><a href="#实战WebRTC" class="headerlink" title="实战WebRTC"></a>实战WebRTC</h5><p>实现 获取本机媒体设备切换 截屏 拍照等</p>
 <p>学习P2P建立通信过程</p>
@@ -379,5 +379,20 @@
 </script>
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
