@@ -15,13 +15,13 @@
   
 
   
-    <meta name="description" content="实习周记(24年5月27日)" />
+    <meta name="description" content="实习周记(24年7月8日)" />
   
   
   
   <link rel="icon" type="image/x-icon" href="/images/footer-logo.png">
   
-  <title>实习周记(24年5月27日) [ Hexo ]</title>
+  <title>实习周记(24年7月8日) [ Hexo ]</title>
   
     <!-- stylesheets list from config.yml -->
     
@@ -108,12 +108,12 @@
   <article class="post" id="post">
     <header class="post-header text-center">
       <h1 class="title">
-        实习周记(24年5月27日)
+        实习周记(24年7月8日)
       </h1>
       <span>
         
-        <time class="time" datetime="2024-05-27T02:47:33.000Z">
-        2024-05-27
+        <time class="time" datetime="2024-07-08T02:47:33.000Z">
+        2024-07-08
       </time>
         
       </span>
@@ -128,11 +128,39 @@
       <span id="busuanzi_value_page_pv"></span> 点击
     </span>
       <span class="slash">/</span>
-      <span class="read">阅读耗时 1 分钟</span>
+      <span class="read">阅读耗时 2 分钟</span>
     </header>
 
     <div class="post-content">
-      <h4 id="5-27"><a href="#5-27" class="headerlink" title="5.27"></a>5.27</h4>
+      <h3 id="7-8"><a href="#7-8" class="headerlink" title="7.8"></a>7.8</h3><h4 id="学习web-view"><a href="#学习web-view" class="headerlink" title="学习web view"></a>学习web view</h4><blockquote>
+<p>突破苹果对热更新的封锁</p>
+</blockquote>
+<h5 id="三个常用的API"><a href="#三个常用的API" class="headerlink" title="三个常用的API"></a>三个常用的API</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 打开新容器承载H5</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">jsBridge</span>.<span class="title function_">openWebView</span>(&#123;   </span><br><span class="line"> <span class="string">&#x27;action&#x27;</span>: <span class="string">&#x27;https://XXX.XXX.com&#x27;</span>,   </span><br><span class="line"> <span class="string">&#x27;login&#x27;</span>: <span class="literal">true</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 销毁webview</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">jsBridge</span>.<span class="title function_">quitAction</span>()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 控制客户端顶部back按钮-触发回调函数</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">jsBridge</span>.<span class="title function_">handleBackAction</span>(<span class="string">&quot;openCancelPayModal&quot;</span>, <span class="variable language_">window</span>.<span class="property">openCancelPayModal</span>, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+
+<h5 id="了解了JSBridge通信的概念"><a href="#了解了JSBridge通信的概念" class="headerlink" title="了解了JSBridge通信的概念"></a>了解了JSBridge通信的概念</h5><p>1.最早使用URL Scheme实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">callNativeMethod</span>(<span class="params"></span>) &#123;    <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = <span class="string">&quot;myapp://nativeMethod?param1=value1&amp;param2=value2&quot;</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>原生代码会监听这个URL Scheme </p>
+<ol start="2">
+<li>后来使用</li>
+</ol>
+<p>在Android中通过JavaScript Interface进行交互</p>
+<p>在iOS中通过MessageHandler进行交互</p>
+<ol start="3">
+<li>现代使用PostMessage API</li>
+</ol>
+<h5 id="明白了webview的性能问题"><a href="#明白了webview的性能问题" class="headerlink" title="明白了webview的性能问题"></a>明白了webview的性能问题</h5><p>由于WebView需要初始化 而不是直接利用地址建立连接 这一环节需要几百ms</p>
+<p>学习了 <a target="_blank" rel="noopener" href="https://tech.meituan.com/2017/06/09/webviewperf.html">https://tech.meituan.com/2017/06/09/webviewperf.html</a></p>
+<p>认真读了 <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/evzDnTsHrAr2b9jcevwBzA">https://mp.weixin.qq.com/s/evzDnTsHrAr2b9jcevwBzA</a> 受益匪浅</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (currentSelectChannel === <span class="variable constant_">ADYEN_PAYMENTS</span>.<span class="property">ALIPAY_CN</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (!currentVerify.<span class="property">isAuthorised</span>) &#123;</span><br><span class="line">    <span class="title function_">setSelectChannel</span>(currentSelectChannel);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="title class_">Toast</span>.<span class="title function_">show</span>(<span class="title function_">formatMsg</span>(<span class="string">&#x27;pay_verify_bound&#x27;</span>));</span><br><span class="line">  &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (currentSelectChannel === <span class="variable constant_">ADYEN_PAYMENTS</span>.<span class="property">PAYNOW</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (!currentVerify.<span class="property">isAuthorised</span>) &#123;</span><br><span class="line">    <span class="title function_">setSelectChannel</span>(currentSelectChannel);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="title class_">Toast</span>.<span class="title function_">show</span>(<span class="title function_">formatMsg</span>(<span class="string">&#x27;pay_verify_bound&#x27;</span>));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
     </div>
 
   </article>
@@ -140,7 +168,7 @@
     
   <div id="toc" class="toc-article">
     <strong class="toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-27"><span class="toc-text">5.27</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-8"><span class="toc-text">7.8</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0web-view"><span class="toc-text">学习web view</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%89%E4%B8%AA%E5%B8%B8%E7%94%A8%E7%9A%84API"><span class="toc-text">三个常用的API</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E4%BA%86JSBridge%E9%80%9A%E4%BF%A1%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text">了解了JSBridge通信的概念</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%98%8E%E7%99%BD%E4%BA%86webview%E7%9A%84%E6%80%A7%E8%83%BD%E9%97%AE%E9%A2%98"><span class="toc-text">明白了webview的性能问题</span></a></li></ol></li></ol></li></ol>
   </div>
 
 
@@ -158,16 +186,16 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/2024/05/17/%E5%AE%9E%E4%B9%A0%E5%91%A8%E8%AE%B0(24%E5%B9%B45%E6%9C%8817%E6%97%A5)/" rel="next" title="实习周记(24年5月17日)">
-          实习周记(24年5月17日)
+          <a href="/2024/06/25/%E6%8A%80%E6%9C%AF%E5%91%A8%E8%AE%B0(24%E5%B9%B46%E6%9C%8825%E6%97%A5).md/" rel="next" title="实习周记(24年6月25日)">
+          实习周记(24年6月25日)
           </a>
         
       </div>
   
       <div class="post-nav-item post-nav-prev">
           
-          <a href="/2024/06/25/%E6%8A%80%E6%9C%AF%E5%91%A8%E8%AE%B0(24%E5%B9%B46%E6%9C%8825%E6%97%A5).md/" rel="prev" title="实习周记(24年6月25日)">
-            实习周记(24年6月25日)
+          <a href="/2024/07/23/Linux%E5%AE%9E%E6%88%98%E5%B0%8F%E8%AE%B0/" rel="prev" title="Nginx实战小记">
+            Nginx实战小记
           </a>
           <span>〉</span>
         
