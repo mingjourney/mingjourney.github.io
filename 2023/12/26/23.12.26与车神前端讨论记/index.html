@@ -1,0 +1,429 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="前端,八股,js手撕,web安全," />
+  
+
+  
+    <meta name="description" content="23.12.26与车神前端讨论记" />
+  
+  
+  
+  <link rel="icon" type="image/x-icon" href="/images/footer-logo.png">
+  
+  <title>23.12.26与车神前端讨论记 [ Hexo ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    
+    <span class="title" style="text-transform:none">Hexo</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            
+              <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+            
+          
+      
+          
+            
+              <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+            
+              <a href="#" id="post" class="pure-menu-link">文章</a>
+              <ul class="pure-menu-children">
+              
+                  
+                    <li class="pure-menu-item"><a href="/categories" style="color:#202020;" class="pure-menu-link">分类</a></li>
+                  
+              
+                  
+                    <li class="pure-menu-item"><a href="/archives" style="color:#202020;" class="pure-menu-link">归档</a></li>
+                  
+              
+                  
+                    <li class="pure-menu-item"><a href="/tags" style="color:#202020;" class="pure-menu-link">标签</a></li>
+                  
+              
+              </ul>
+            </li>
+          
+      
+          
+            
+              <li class="pure-menu-item"><a href="/paper" class="pure-menu-link">Papers</a></li>
+            
+          
+      
+          
+            
+              <li class="pure-menu-item"><a href="/project" class="pure-menu-link">项目</a></li>
+            
+          
+      
+          
+            
+              <li class="pure-menu-item"><a href="/activity" class="pure-menu-link">动态</a></li>
+            
+          
+      
+          
+            
+              <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+            
+          
+      
+  </ul>
+   
+</nav>
+
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        23.12.26与车神前端讨论记
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2023-12-26T13:23:34.000Z">
+        2023-12-26
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js%E6%89%8B%E6%92%95/" rel="tag">js手撕</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web%E5%AE%89%E5%85%A8/" rel="tag">web安全</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%AB%E8%82%A1/" rel="tag">八股</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 3 分钟</span>
+    </header>
+
+    <div class="post-content">
+      <p>手撕new apply 、bin d 隐式转换 前端安全等</p>
+<span id="more"></span>
+
+<h3 id="new的探讨"><a href="#new的探讨" class="headerlink" title="new的探讨"></a>new的探讨</h3><p>1.创建一个对象</p>
+<p>2.设置原型</p>
+<p>3.设置this，调用构造函数</p>
+<p>4.返回，引用类型则返回构造函数的返回值，原始值则返回新建的对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> animal = <span class="keyword">new</span> <span class="title class_">Animal</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line"><span class="keyword">const</span> animal = <span class="title function_">myNew</span>(<span class="title class_">Animal</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Animal</span>(<span class="params">a, b, c</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">a</span> = a;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">b</span> = b;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">c</span> = c;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Animal</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); <span class="comment">// &#123; a:1, b:2, c:3&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">myNew</span>(<span class="params">Class, ...args</span>) &#123;</span><br><span class="line">    <span class="comment">// const obj = &#123;&#125;;</span></span><br><span class="line">    <span class="comment">// 浏览器标准</span></span><br><span class="line">    <span class="comment">// obj.__proto__ = Class.prototype;</span></span><br><span class="line">    <span class="comment">// es6标准</span></span><br><span class="line">    <span class="comment">// Object.setPrototypeOf(obj, Class.prototype);</span></span><br><span class="line">    <span class="keyword">const</span> obj = <span class="title class_">Object</span>.<span class="title function_">create</span>(<span class="title class_">Class</span>.<span class="property"><span class="keyword">prototype</span></span>);</span><br><span class="line">    <span class="keyword">const</span> ret = <span class="title class_">Class</span>.<span class="title function_">apply</span>(obj, args);</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">typeof</span> ret === <span class="string">&#x27;object&#x27;</span> &amp;&amp; ret !== <span class="literal">null</span> || <span class="keyword">typeof</span> ret === <span class="string">&#x27;function&#x27;</span>) ? ret : obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>globalThis = window || global;</p>
+<p>Arguments 在箭头函数中没有 用 const [first, …restArgs] = arguments</p>
+<h3 id="Call-bind-Apply"><a href="#Call-bind-Apply" class="headerlink" title="Call bind Apply"></a>Call bind Apply</h3><p>apply call会执行 bind不执行</p>
+<ul>
+<li>apply第二位要传数组</li>
+<li>Call 不是</li>
+</ul>
+<p>Array.prototype.slice.apply(obj, [1])</p>
+<p><img src="https://szshgv1kbo.feishu.cn/space/api/box/stream/download/asynccode/?code=ODVhMjA0Y2E4MTQwMTEzNjU2MjVjN2M0NDk4NDdjYmFfMGp4SUJCRlNJQmQ0U2pQb1paR2tjbEFQd2VRM09BVUxfVG9rZW46RlJ1a2JDbjVXb3BmV1B4cU8zV2NycGhRbmpkXzE3MDQyMDgwMzc6MTcwNDIxMTYzN19WNA" alt="img"></p>
+<p>理解完成</p>
+<p><img src="https://szshgv1kbo.feishu.cn/space/api/box/stream/download/asynccode/?code=YzdlZjk3NTk5YjFhMjIzOGUwZDVlODFlNDkxYTU4N2RfUU1tR3RrUHZsMDZUd09VbHROeGZ3aUpkN0JsVFRTNklfVG9rZW46THJqdmJYZndMb0hSZ3N4blpmSWNIUEFubmlnXzE3MDQyMDgwMzc6MTcwNDIxMTYzN19WNA" alt="img"></p>
+<p>Call</p>
+<p><img src="https://szshgv1kbo.feishu.cn/space/api/box/stream/download/asynccode/?code=YjhlNWVmMzgzOTA0YWRiNzk2MTk5MGE5NWRlMDAxOTdfSWFhd0tzNWVXWWdqTmpHQlRaRTJ3MDdiSDBtSHpidE9fVG9rZW46V0ZQMGJOa0xHb1FzZ2l4QkRINmNHb3A4bm1jXzE3MDQyMDgwMzc6MTcwNDIxMTYzN19WNA" alt="img"></p>
+<p><img src="https://szshgv1kbo.feishu.cn/space/api/box/stream/download/asynccode/?code=YmY1MTdjMGNiM2M1YjI1Y2YyNDZmYzNmMDA5ZjQwYzRfN0FSUERIT1pYTlpMQUcxa01aYjJNM0ZQalVMQkRRRXNfVG9rZW46WkFydmI5dlRjb0J0U3h4VkE0VWNVWllObm1oXzE3MDQyMDgwMzc6MTcwNDIxMTYzN19WNA" alt="img"></p>
+<p>Bind</p>
+<p><img src="https://szshgv1kbo.feishu.cn/space/api/box/stream/download/asynccode/?code=MjUwOGNiMGY1NDMzOTVhNzg5N2YzM2U2NjNhNTM4NDZfV3B5Y0lsWVZ6S1RPcmpkMG1kZVYzREFUeXREQ1NpUUlfVG9rZW46VEZGdGJENFJxbzhXTG94Zmt3cmNmWFUxbm1XXzE3MDQyMDgwMzc6MTcwNDIxMTYzN19WNA" alt="img"></p>
+<p>数据类型转换</p>
+<p><img src="https://szshgv1kbo.feishu.cn/space/api/box/stream/download/asynccode/?code=N2MzMTZiN2VlOTlhMWI4NjkzNTU3MmIxMmIyNmFhZWZfc0dQVlpjekFrNzAzNzVVUWV6UGpLNTgyOEl2MFpOTlhfVG9rZW46Q25Vb2J4bVVCbzBJVXV4Zm1wSWNKS2RkbnNnXzE3MDQyMDgwMzc6MTcwNDIxMTYzN19WNA" alt="img"></p>
+<ol>
+<li>({} - ‘9’) // NaN  </li>
+</ol>
+<ul>
+<li>‘[object Object]’ - 9 </li>
+<li>NaN - 9 = NaN</li>
+</ul>
+<p><img src="https://szshgv1kbo.feishu.cn/space/api/box/stream/download/asynccode/?code=MGEyYzA0ZmVhMWUzMmY4ZTUyYzViYTY1YTU5YTRhZGNfMWdRTFUya1U4UUd5MTJnRkZUclFhUkV6dUp2cXhxeUZfVG9rZW46SzBBS2JrQWpBb3Jibzh4WUQ5T2N3VHM4bmpnXzE3MDQyMDgwMzc6MTcwNDIxMTYzN19WNA" alt="img"></p>
+<h3 id="parseInt-和-Number"><a href="#parseInt-和-Number" class="headerlink" title="parseInt 和 Number"></a>parseInt 和 Number</h3><p>Number(‘[object Object]’)</p>
+<p>parseInt(‘[object Object]’, 10)</p>
+<p><img src="https://szshgv1kbo.feishu.cn/space/api/box/stream/download/asynccode/?code=ZGZjYjhlZTFhYTY5MGFhZDMxNTQyMTAzMDMzOGQyODFfM0lXV3NuNWxlcDV4MnBrU1M3MVJxb2pnNHNQdm0yM3BfVG9rZW46SXpNRmIyMzB4bzJoRVZ4WHV3Z2NSeXVDbmhjXzE3MDQyMDgwMzc6MTcwNDIxMTYzN19WNA" alt="img"></p>
+<h3 id="NaN-问题"><a href="#NaN-问题" class="headerlink" title="NaN === 问题"></a>NaN === 问题</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">is</span>(<span class="title class_">NaN</span>, <span class="title class_">NaN</span>) === <span class="literal">true</span></span><br><span class="line">(<span class="title class_">NaN</span> === <span class="title class_">NaN</span>) === <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<p>[2] - ‘9’ // -7</p>
+<ul>
+<li>‘2’ - 9 = -7</li>
+</ul>
+<p>[2, 3] - ‘9’   // NaN</p>
+<p>({} + ‘9’) // ‘[object Object]’ + ‘9’ = ‘[object Object]9’</p>
+<p>[2] + ‘9’ // ‘2’ + ‘9’ = ‘29’</p>
+<p>[2, 3] + ‘9’ // ‘2,3’ + ‘9’ = ‘2,39’</p>
+<p>9 + {}  // ‘9[object Object]’</p>
+<p><img src="https://szshgv1kbo.feishu.cn/space/api/box/stream/download/asynccode/?code=ZjE3MDFlMTkyODRjOTIyNjQ2M2RmOTEwNzU4NzMwMTNfbmkwV0RYRjFtWjJIbFZjczJ0Z0FoblJmQ01MamxkWjBfVG9rZW46SlZuYWIyMXE5b3RsT2Z4UTQ2WWMxV0tVbnFlXzE3MDQyMDgwMzc6MTcwNDIxMTYzN19WNA" alt="img"></p>
+<h3 id="前端-混淆工具"><a href="#前端-混淆工具" class="headerlink" title="前端 混淆工具"></a><strong>前端 混淆工具</strong></h3><p>后面聊了 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Wasm</span></span><br><span class="line"></span><br><span class="line"><span class="variable constant_">SSL</span> <span class="variable constant_">TLS</span>  aes <span class="variable constant_">CBC</span></span><br><span class="line"></span><br><span class="line">xss 三种类型</span><br><span class="line"></span><br><span class="line">csrf</span><br><span class="line"></span><br><span class="line">samesite 严格 宽松</span><br><span class="line"></span><br><span class="line">松弛</span><br></pre></td></tr></table></figure>
+
+
+
+
+    </div>
+
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#new%E7%9A%84%E6%8E%A2%E8%AE%A8"><span class="toc-text">new的探讨</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Call-bind-Apply"><span class="toc-text">Call bind Apply</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#parseInt-%E5%92%8C-Number"><span class="toc-text">parseInt 和 Number</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NaN-%E9%97%AE%E9%A2%98"><span class="toc-text">NaN &#x3D;&#x3D;&#x3D; 问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF-%E6%B7%B7%E6%B7%86%E5%B7%A5%E5%85%B7"><span class="toc-text">前端 混淆工具</span></a></li></ol>
+  </div>
+
+
+  </div>
+</div>
+<div class="copyright">
+    <span>本作品采用</span>
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+
+
+  
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2023/12/05/%E5%87%A0%E5%A4%A9%E7%9A%84Three.js%E5%AD%A6%E4%B9%A0/" rel="next" title="几天的Three.js 学习记录（第一篇章）">
+          几天的Three.js 学习记录（第一篇章）
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+          <a href="/2024/01/02/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92_1/" rel="prev" title="前端学习计划_1">
+            前端学习计划_1
+          </a>
+          <span>〉</span>
+        
+      </div>
+    </div>
+  
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <div id="gitalk-container"></div>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script type="text/javascript">
+        var gitalk = new Gitalk({
+            clientID: 'xxx',
+            clientSecret: 'xxx',
+            id: window.location.pathname,
+            repo: 'issue repo name',
+            owner: 'Github username',
+            admin: 'github username'
+        })
+        gitalk.render('gitalk-container')
+    </script>
+
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="https://github.com/fooying" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="/links">友情链接</a> |
+        <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/fooying/hexo-theme-xoxo-plus" target="_blank">Theme xoxo-plus</a> |
+        <a class="bottom-item" href="/atom.xml">订阅</a>
+    </div>
+</footer>
+
+  
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+  
+<script>
+  (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
