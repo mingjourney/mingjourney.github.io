@@ -21,7 +21,7 @@
   
   <link rel="icon" type="image/x-icon" href="/images/footer-logo.png">
   
-  <title>category: 笔记 [ Hexo ]</title>
+  <title> [ Hexo ]</title>
   
     <!-- stylesheets list from config.yml -->
     
@@ -51,13 +51,13 @@
       
           
             
-              <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover actived">
+              <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
             
               <a href="#" id="post" class="pure-menu-link">文章</a>
               <ul class="pure-menu-children">
               
                   
-                    <li class="pure-menu-item"><a href="/categories" class="pure-menu-link">分类</a></li>
+                    <li class="pure-menu-item"><a href="/categories" style="color:#202020;" class="pure-menu-link">分类</a></li>
                   
               
                   
@@ -104,217 +104,128 @@
 
   <div class="container" id="content-outer">
     <div class="inner" id="content-inner">
-      
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2024-12-03T01:50:28.474Z">
+        2024-12-03
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <span class="read">阅读耗时 2 分钟</span>
+    </header>
 
-  
-  
+    <div class="post-content">
+      <h3 id="NVM镜像问题"><a href="#NVM镜像问题" class="headerlink" title="NVM镜像问题"></a>NVM镜像问题</h3><p><strong>查看 <code>NVM_DIR</code> 环境变量</strong>：</p>
+<ul>
+<li><p>打开终端并运行以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bash</span><br><span class="line">复制代码</span><br><span class="line">echo $NVM_DIR</span><br></pre></td></tr></table></figure></li>
+<li><p>这将显示 NVM 的安装路径，通常是 <code>~/.nvm</code>。</p>
+</li>
+</ul>
+<p><strong>查看 NVM 的配置文件</strong>：</p>
+<ul>
+<li><p>NVM 的设置通常是在你的 shell 配置文件中定义的，例如 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<p>、</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/.bash_profile</span><br></pre></td></tr></table></figure>
+
+<p>（对于 Bash）或 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>（对于 Zsh）。打开这些文件并查找与 NVM 相关的行，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bash</span><br><span class="line">复制代码</span><br><span class="line">export NVM_DIR=&quot;$HOME/.nvm&quot;</span><br><span class="line">[ -s &quot;$NVM_DIR/nvm.sh&quot; ] &amp;&amp; \. &quot;$NVM_DIR/nvm.sh&quot; # This loads nvm</span><br></pre></td></tr></table></figure></li>
+<li><p>这里的 <code>NVM_DIR</code> 就是 NVM 的安装路径，而 <code>nvm.sh</code> 是 NVM 的主脚本，用于加载 NVM 功能。</p>
+</li>
+</ul>
+<p><strong>查看 NVM 版本</strong>：</p>
+<ul>
+<li><p>你可以通过以下命令查看 NVM 的版本以及其他设置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bash</span><br><span class="line">复制代码</span><br><span class="line">nvm --version</span><br></pre></td></tr></table></figure></li>
+<li><p>你也可以使用 <code>nvm debug</code> 查看更详细的 NVM 环境信息，包括当前使用的 Node 版本、NVM 目录等。</p>
+</li>
+</ul>
+<p><strong>自定义 NVM 设置</strong>：</p>
+<ul>
+<li><p>如果你想自定义 NVM 的设置，可以在你的 shell 配置文件中添加或修改相关环境变量。例如，设置默认 Node 版本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bash</span><br><span class="line">复制代码</span><br><span class="line">nvm alias default node</span><br></pre></td></tr></table></figure></li>
+<li><p>保存文件后，记得运行以下命令使其生效：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bash</span><br><span class="line">复制代码</span><br><span class="line">source ~/.bashrc   # 如果你使用的是 Bash</span><br><span class="line">source ~/.zshrc    # 如果你使用的是 Zsh</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+    </div>
+
+  </article>
+  <div class="toc-container">
     
-    
-    <section class="post page archives">
-      <h3 class="archive-year-wrap">
-        <a href="/archives/2024" class="archive-year">
-          2024
-        </a>
-      </h3>
-      <div class="archives">
-  
-  <div class="archive" >
-  <a class="post-go" href="/2024/11/25/实习周记(24年11月25日)/">
-    <div>
-      <span class="date">
-        11-25
-      </span>
-      <span class="slash">/</span>
-      实习周记(24年11月25日)
-    </div>
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#NVM%E9%95%9C%E5%83%8F%E9%97%AE%E9%A2%98"><span class="toc-text">NVM镜像问题</span></a></li></ol>
+  </div>
 
-    <!--<div class="excerpt">-->
-      <!--<p>加密，</p>-->
-    <!--</div>-->
-  </a>
 
+  </div>
 </div>
-
-  
-  
-  <div class="archive" >
-  <a class="post-go" href="/2024/10/27/实习周记(24年10月27日) copy/">
-    <div>
-      <span class="date">
-        10-27
-      </span>
-      <span class="slash">/</span>
-      实习周记(24年10月27日)
-    </div>
-
-    <!--<div class="excerpt">-->
-      <!--<p>持续学习</p>-->
-    <!--</div>-->
-  </a>
-
-</div>
-
-  
-  
-  <div class="archive" >
-  <a class="post-go" href="/2024/09/13/实习周记(24年9月13日)/">
-    <div>
-      <span class="date">
-        09-13
-      </span>
-      <span class="slash">/</span>
-      实习周记(24年9月13日)
-    </div>
-
-    <!--<div class="excerpt">-->
-      <!---->
-    <!--</div>-->
-  </a>
-
-</div>
-
-  
-  
-  <div class="archive" >
-  <a class="post-go" href="/2024/09/03/万花筒随记(24年下半年)/">
-    <div>
-      <span class="date">
-        09-03
-      </span>
-      <span class="slash">/</span>
-      万花筒随记(24年下半年)
-    </div>
-
-    <!--<div class="excerpt">-->
-      <!---->
-    <!--</div>-->
-  </a>
-
-</div>
-
-  
-  
-  <div class="archive" >
-  <a class="post-go" href="/2024/07/23/Linux实战小记/">
-    <div>
-      <span class="date">
-        07-23
-      </span>
-      <span class="slash">/</span>
-      Nginx实战小记
-    </div>
-
-    <!--<div class="excerpt">-->
-      <!---->
-    <!--</div>-->
-  </a>
-
-</div>
-
-  
-  
-  <div class="archive" >
-  <a class="post-go" href="/2024/07/08/技术周记(24年7月8日)/">
-    <div>
-      <span class="date">
-        07-08
-      </span>
-      <span class="slash">/</span>
-      实习周记(24年7月8日)
-    </div>
-
-    <!--<div class="excerpt">-->
-      <!---->
-    <!--</div>-->
-  </a>
-
-</div>
-
-  
-  
-  <div class="archive" >
-  <a class="post-go" href="/2024/06/25/技术周记(24年6月25日).md/">
-    <div>
-      <span class="date">
-        06-25
-      </span>
-      <span class="slash">/</span>
-      实习周记(24年6月25日)
-    </div>
-
-    <!--<div class="excerpt">-->
-      <!---->
-    <!--</div>-->
-  </a>
-
-</div>
-
-  
-  
-  <div class="archive" >
-  <a class="post-go" href="/2024/05/27/实习周记(24年5月27日)/">
-    <div>
-      <span class="date">
-        05-27
-      </span>
-      <span class="slash">/</span>
-      实习周记(24年5月27日)
-    </div>
-
-    <!--<div class="excerpt">-->
-      <!---->
-    <!--</div>-->
-  </a>
-
-</div>
-
-  
-  
-  <div class="archive" >
-  <a class="post-go" href="/2024/05/17/实习周记(24年5月17日)/">
-    <div>
-      <span class="date">
-        05-17
-      </span>
-      <span class="slash">/</span>
-      实习周记(24年5月17日)
-    </div>
-
-    <!--<div class="excerpt">-->
-      <!---->
-    <!--</div>-->
-  </a>
-
-</div>
-
-  
-  
-  <div class="archive" >
-  <a class="post-go" href="/2024/05/10/实习周记(24年5月10日)/">
-    <div>
-      <span class="date">
-        05-10
-      </span>
-      <span class="slash">/</span>
-      实习周记(24年5月10日)
-    </div>
-
-    <!--<div class="excerpt">-->
-      <!---->
-    <!--</div>-->
-  </a>
-
+<div class="copyright">
+    <span>本作品采用</span>
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
 </div>
 
 
-  </div></section>
+  
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2024/12/03/%E9%A1%BE%E5%AE%B6%E9%93%AD%E5%9E%83%E5%9C%BE%E7%AE%B1/" rel="next" title="">
+          
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+      </div>
+    </div>
+  
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <div id="gitalk-container"></div>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script type="text/javascript">
+        var gitalk = new Gitalk({
+            clientID: 'xxx',
+            clientSecret: 'xxx',
+            id: window.location.pathname,
+            repo: 'issue repo name',
+            owner: 'Github username',
+            admin: 'github username'
+        })
+        gitalk.render('gitalk-container')
+    </script>
+
+
 
     </div>
 
-    
-      <nav class="page-nav text-center">
-          <span class="page-number current">1</span><a class="page-number" href="/categories/%E7%AC%94%E8%AE%B0/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/categories/%E7%AC%94%E8%AE%B0/page/4/">4</a><a class="extend next" rel="next" href="/categories/%E7%AC%94%E8%AE%B0/page/2/">〉</a>
-      </nav>
     
 
   </div>

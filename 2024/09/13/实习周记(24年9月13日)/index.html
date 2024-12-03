@@ -15,13 +15,13 @@
   
 
   
-    <meta name="description" content="实习周记(24年2月25日)" />
+    <meta name="description" content="实习周记(24年9月13日)" />
   
   
   
   <link rel="icon" type="image/x-icon" href="/images/footer-logo.png">
   
-  <title>实习周记(24年2月25日) [ Hexo ]</title>
+  <title>实习周记(24年9月13日) [ Hexo ]</title>
   
     <!-- stylesheets list from config.yml -->
     
@@ -108,12 +108,12 @@
   <article class="post" id="post">
     <header class="post-header text-center">
       <h1 class="title">
-        实习周记(24年2月25日)
+        实习周记(24年9月13日)
       </h1>
       <span>
         
-        <time class="time" datetime="2024-03-01T09:40:13.000Z">
-        2024-03-01
+        <time class="time" datetime="2024-09-13T09:40:13.000Z">
+        2024-09-13
       </time>
         
       </span>
@@ -179,9 +179,9 @@
 </ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="comment">// 子组件</span></span><br><span class="line">2<span class="keyword">const</span> <span class="title function_">onDel</span> = (<span class="params">node</span>) =&gt; &#123;</span><br><span class="line"><span class="number">3</span>  <span class="variable language_">this</span>.$emit(<span class="string">&#x27;update:currentBuildingUnitData&#x27;</span>, node);</span><br><span class="line"><span class="number">4</span>  <span class="variable language_">this</span>.$once(<span class="string">&#x27;refresh-completed&#x27;</span>, <span class="function">() =&gt;</span> &#123; <span class="comment">// 使用$once避免重复执行</span></span><br><span class="line"><span class="number">5</span>    <span class="comment">// 这里写需要在父组件表格刷新后执行的代码</span></span><br><span class="line"><span class="number">6</span>  &#125;);</span><br><span class="line"><span class="number">7</span>&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>这样，当子组件触发父组件数据更新后，会监听到父组件完成表格刷新并执行相应的回调操作。注意这依赖于<code>this.$refs.pageTable.reload()</code>方法是否支持Promise，如果不支持，你可能需要自行修改或找到能监听表格实际完成更新的方法</p>
+<p>这样，当子组件触发父组件数据更新后，会监听到父组件完成表格刷新并执行相应的回调操作。注意这依赖于<code>this.$refs.pageTable.reload()</code>方法是否支持Promise，如果不支持，可能需要自行修改或找到能监听表格实际完成更新的方法</p>
 <p>如果<code>this.$refs.pageTable.reload()</code>方法不返回Promise，无法直接得知其何时完成更新，那么可以考虑采用Vue的自定义事件机制来解决这个问题。</p>
-<p>首先，在你的<code>h-paged-table</code>组件内部（假设你是自己编写的或者对其有控制权），在实际完成表格数据更新后触发一个自定义事件，例如<code>table-reloaded</code>：</p>
+<p>首先，在<code>h-paged-table</code>组件内部（假设你是自己编写的或者对其有控制权），在实际完成表格数据更新后触发一个自定义事件，例如<code>table-reloaded</code>：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="comment">// h-paged-table组件内部</span></span><br><span class="line">2<span class="attr">methods</span>: &#123;</span><br><span class="line"><span class="number">3</span>  <span class="title function_">reload</span>(<span class="params"></span>) &#123;</span><br><span class="line"><span class="number">4</span>    <span class="comment">// ... 实现表格数据的重新加载</span></span><br><span class="line"><span class="number">5</span>    <span class="comment">// 数据加载完成后触发事件</span></span><br><span class="line"><span class="number">6</span>    <span class="variable language_">this</span>.$emit(<span class="string">&#x27;table-reloaded&#x27;</span>);</span><br><span class="line"><span class="number">7</span>  &#125;</span><br><span class="line"><span class="number">8</span>&#125;</span><br></pre></td></tr></table></figure>
 
 <p>然后，在父组件中监听这个事件：</p>
@@ -216,16 +216,16 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/2024/02/25/%E5%AE%9E%E4%B9%A0%E5%91%A8%E8%AE%B0(24%E5%B9%B42%E6%9C%8825%E6%97%A5)/" rel="next" title="实习周记(24年2月25日)">
-          实习周记(24年2月25日)
+          <a href="/2024/09/03/%E4%B8%87%E8%8A%B1%E7%AD%92%E9%9A%8F%E8%AE%B0(24%E5%B9%B4%E4%B8%8B%E5%8D%8A%E5%B9%B4)/" rel="next" title="万花筒随记(24年下半年)">
+          万花筒随记(24年下半年)
           </a>
         
       </div>
   
       <div class="post-nav-item post-nav-prev">
           
-          <a href="/2024/03/21/mac%E9%85%8D%E7%BD%AEnacos/" rel="prev" title="mac配置nacos">
-            mac配置nacos
+          <a href="/2024/10/27/%E5%AE%9E%E4%B9%A0%E5%91%A8%E8%AE%B0(24%E5%B9%B410%E6%9C%8827%E6%97%A5)%20copy/" rel="prev" title="实习周记(24年10月27日)">
+            实习周记(24年10月27日)
           </a>
           <span>〉</span>
         
